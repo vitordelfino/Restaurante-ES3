@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Cadastro de Cliente</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <form (submit)="cadastrarCliente()">
+
+    <ion-item>
+      <ion-label floating >CPF</ion-label>
+      <ion-input [(ngModel)]="cpf" name="cpf" type="text" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating >Nome</ion-label>
+      <ion-input [(ngModel)]="nome" name="nome" type="text" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating >Telefone</ion-label>
+      <ion-input [(ngModel)]="telefone" name="telefone" type="tel" ></ion-input>
+    </ion-item>
+
+    <button ion-button block type="submit">Cadastrar</button>
+
+  </form>
+
+</ion-content>

@@ -1,0 +1,42 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Fechamento de Pedido</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card>
+
+    <ion-card-content>
+
+    <ion-item-group>
+      <ion-item-divider color="primary">
+       Mesa {{ mesa.numero }} 
+      </ion-item-divider>      
+    </ion-item-group>
+    
+      <ion-label>
+        <h2>Garçom: {{mesa.garcom.nome}}</h2>
+        <h2>Cliente: {{ mesa.cliente.nome }}</h2>
+      </ion-label>
+      <ion-label *ngFor="let pedido of pedidos" >
+        <h2>{{ pedido.quantidade }}x - {{ pedido.item }}</h2>
+      </ion-label>
+      <ion-label>
+        <h2>Data: {{ data }}</h2>
+        <h1>Total: {{ getTotal().toFixed(2) }}</h1>
+        
+      </ion-label>
+    </ion-card-content>
+  </ion-card>
+
+  <button ion-button block (click)="FecharConta()">
+    Fechar Conta
+  </button>
+
+</ion-content>

@@ -1,0 +1,44 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Mesas</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card *ngFor="let mesa of mesas" >
+    <ion-card-content>
+
+      <ion-item-group>
+        <ion-item-divider color="primary">
+          <ion-icon name="restaurant" item-left></ion-icon>
+            Mesa {{ mesa.numero }}
+        </ion-item-divider>
+        <ion-label>
+          <ion-item *ngIf="mesa.ocupada">Mesa Ocupada</ion-item>
+          <ion-item *ngIf="!mesa.ocupada">MesaLivre</ion-item>
+          <ion-item *ngIf="mesa.cliente.nome" >Cliente: {{ mesa.cliente.nome }}</ion-item>
+          <ion-item *ngIf="mesa.garcom.nome" >Garçom: {{ mesa.garcom.nome }}</ion-item>
+        </ion-label>
+        
+
+      </ion-item-group>   
+        
+      <button ion-button block outline icon-left (click)="anotarPedido(mesa)">
+        <ion-icon name="book"></ion-icon>
+          Anotar Pedido    
+      </button>
+    
+      <button *ngIf="mesa.ocupada"  ion-button block outline icon-left (click)="fecharPedido(mesa)">
+        <ion-icon name="list-box"></ion-icon>
+          Fechar Pedido   
+      </button>
+
+    </ion-card-content>
+    
+  </ion-card>
+
+</ion-content>

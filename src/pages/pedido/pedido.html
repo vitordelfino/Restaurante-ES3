@@ -1,0 +1,113 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Pedido</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-grid *ngIf="!cliente" >
+    <ion-row>
+
+      <ion-col col-9>
+        <ion-item>
+          <ion-label floating>Digite o cpf do cliente:</ion-label>
+          <ion-input [(ngModel)]="cpf" name="cpf" type="text" ></ion-input> 
+        </ion-item>        
+      </ion-col>
+
+      <ion-col col-2>
+        <ion-label> </ion-label>
+        <button ion-button round (click)="buscarCliente()">OK</button>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+  
+  <ion-card *ngIf="cliente">
+
+    <ion-card-content>
+
+      <ion-item-group>
+        <ion-item-divider color=primary>
+          <ion-icon name="person" item-left></ion-icon> 
+          Cliente        
+        </ion-item-divider>
+        <ion-item>
+          <ion-label>
+            <h1>{{ cliente.nome }}</h1>
+            <h1>{{ cliente.cpf }}</h1>
+          </ion-label>
+        </ion-item>   
+      </ion-item-group>
+
+      <ion-item-group>
+        <ion-item-divider color=primary>
+          <ion-icon name="restaurant" item-left></ion-icon>
+          Comidas          
+        </ion-item-divider>
+
+        <ion-item *ngFor="let comida of comidas">
+          <ion-label>
+            <h2>{{ comida.nome }}</h2>
+            <h3>{{ comida.descricao }}</h3>
+            <h3>{{ comida.preco.toFixed(2) }}</h3>
+          </ion-label>
+          <ion-toggle
+            #toogle color="secondary"
+            (ionChange)="adicionaItem(toogle.checked, comida)">
+          </ion-toggle>
+        </ion-item>
+      </ion-item-group>
+
+      <ion-item-group>
+        <ion-item-divider color=primary>
+          <ion-icon name="beer" item-left></ion-icon>
+          Bebidas          
+        </ion-item-divider>
+
+        <ion-item *ngFor="let bebida of bebidas">
+          <ion-label>
+            <h2>{{ bebida.nome }}</h2>
+            <h3>{{ bebida.preco.toFixed(2) }}</h3>
+          </ion-label>
+          <ion-toggle
+            #toogle2 color="secondary"
+            (ionChange)="adicionaItem(toogle2.checked, bebida)">
+          </ion-toggle>
+        </ion-item>
+      </ion-item-group>
+
+     
+
+    </ion-card-content>
+
+  </ion-card>
+
+    
+  <ion-card *ngIf="total > 0">
+     <ion-item-group>
+      <ion-item-divider color="primary">
+        <ion-icon name="cash"></ion-icon>
+        Total
+      </ion-item-divider>
+      <ion-card-content>
+        <ion-label *ngFor="let item of pedido">
+          {{ item.item }} - {{ item.quantidade }}
+        </ion-label>
+        <ion-label>
+        Total: R$ {{ total.toFixed(2) }}
+        </ion-label>
+      </ion-card-content>      
+    </ion-item-group>   
+  </ion-card>
+
+  <button *ngIf="total > 0" ion-button block (click)="confirmarPedido()">Confirmar Pedido</button>
+
+</ion-content>
+
+

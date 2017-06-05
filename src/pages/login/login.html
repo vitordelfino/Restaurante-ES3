@@ -1,0 +1,32 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Olá Garçom, Faça login !!!</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <form (submit)="efetuarLogin()">
+
+    <ion-item>
+      <ion-label stacked>User</ion-label>
+      <ion-input [(ngModel)]="usuario" name="usuario" type="text" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Password</ion-label>
+      <ion-input [(ngModel)]="senha" name="senha" type="password" ></ion-input>
+    </ion-item>
+
+    <button ion-button block type="submit">Logar-se</button>
+    
+  </form>
+
+  <button ion-button block (click)="cadastrar()">Cadastrar</button>
+
+
+
+</ion-content>

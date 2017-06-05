@@ -1,0 +1,34 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Cadastro de Garçom</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <form (submit)="cadastrarGarcom()">
+
+    <ion-item>
+      <ion-label stacked>Nome</ion-label>
+      <ion-input [(ngModel)]="garcom.nome" name="nome"  type="text" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>CPF</ion-label>
+      <ion-input [(ngModel)]="garcom.cpf" name="cpf"  type="text" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Senha</ion-label>
+      <ion-input [(ngModel)]="senha" name="senha"  type="password" ></ion-input>
+    </ion-item>
+
+    <button ion-button block type="submit">Cadastrar</button>
+
+  </form>
+
+</ion-content>
